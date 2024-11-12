@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="it.unibo.deathnote.TestDeathNote" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-11-12T21:16:27" hostname="MioPC" time="6.234">
+  <properties/>
+  <testcase name="EmptyOrNullRule()" classname="it.unibo.deathnote.TestDeathNote" time="0.025"/>
+  <testcase name="CauseOfDeath()" classname="it.unibo.deathnote.TestDeathNote" time="0.105"/>
+  <testcase name="AllHumansWillDie()" classname="it.unibo.deathnote.TestDeathNote" time="0.003"/>
+  <testcase name="NegativeRule()" classname="it.unibo.deathnote.TestDeathNote" time="0.002"/>
+  <testcase name="RuleZero()" classname="it.unibo.deathnote.TestDeathNote" time="0.002"/>
+  <testcase name="DeathDetails()" classname="it.unibo.deathnote.TestDeathNote" time="6.088"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
