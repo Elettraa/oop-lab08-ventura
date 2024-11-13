@@ -3,7 +3,7 @@ package it.unibo.mvc.view;
 import it.unibo.mvc.api.DrawNumberController;
 import it.unibo.mvc.api.DrawResult;
 
-public class DrawNumberViewI implements it.unibo.mvc.api.DrawNumberView {
+public class DrawNumberViewImpl implements it.unibo.mvc.api.DrawNumberView {
 
     @Override
     public void setController(DrawNumberController observer) {

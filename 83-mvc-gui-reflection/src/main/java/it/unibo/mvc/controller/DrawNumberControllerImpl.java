@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * This class implements the game controller. It orchestrates the game, exposes methods to its observers
+ * This class implements the game controller. It orchestrates the game, exposes
+ * methods to its observers
  * (the boundaries), and sends results to them.
  */
 public final class DrawNumberControllerImpl implements DrawNumberController {
@@ -30,7 +31,7 @@ public final class DrawNumberControllerImpl implements DrawNumberController {
 
     @Override
     public void addView(final DrawNumberView view) {
-        Objects.requireNonNull(view, "Cannot set a null view");
+        //Objects.requireNonNull(view, "Cannot set a null view");
         views.add(view);
         view.setController(this);
         view.start();
@@ -39,7 +40,7 @@ public final class DrawNumberControllerImpl implements DrawNumberController {
     @Override
     public void newAttempt(final int n) {
         final DrawResult resul = model.attempt(n);
-        for(DrawNumberView view : views){
+        for (DrawNumberView view : views) {
             view.result(resul);
         }
     }
