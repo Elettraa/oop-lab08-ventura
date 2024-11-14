@@ -7,7 +7,6 @@ import it.unibo.mvc.api.DrawResult;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * This class implements the game controller. It orchestrates the game, exposes
