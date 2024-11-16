@@ -30,7 +30,7 @@ class TestDeathNote {
     @Test
     public void NegativeRule() {
         try {
-            myDeathNote.getRule(0);
+            myDeathNote.getRule(-1);
             fail("Expected IllegalArgumentException to be thrown");
         } catch (Exception e) {
             assertEquals(IllegalArgumentException.class, e.getClass());
@@ -43,7 +43,7 @@ class TestDeathNote {
     public void RuleZero() {
         try {
             myDeathNote.getRule(0);
-            fail("Expected IllegalArgumentException to be thrown"); 
+            fail("Expected IllegalArgumentException to be thrown");
         } catch (Exception e) {
             assertEquals(IllegalArgumentException.class, e.getClass());
             assertNotNull(e.getMessage());
