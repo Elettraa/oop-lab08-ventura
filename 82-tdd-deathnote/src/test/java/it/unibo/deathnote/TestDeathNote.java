@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,8 @@ class TestDeathNote {
     @Test
     public void NegativeRule() {
         try {
-            myDeathNote.getRule(-1);
+            myDeathNote.getRule(0);
+            fail("Expected IllegalArgumentException to be thrown");
         } catch (Exception e) {
             assertEquals(IllegalArgumentException.class, e.getClass());
             assertNotNull(e.getMessage());
@@ -41,6 +43,7 @@ class TestDeathNote {
     public void RuleZero() {
         try {
             myDeathNote.getRule(0);
+            fail("Expected IllegalArgumentException to be thrown"); 
         } catch (Exception e) {
             assertEquals(IllegalArgumentException.class, e.getClass());
             assertNotNull(e.getMessage());

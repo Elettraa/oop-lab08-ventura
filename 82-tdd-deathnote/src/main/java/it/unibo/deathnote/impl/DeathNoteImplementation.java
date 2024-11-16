@@ -27,10 +27,10 @@ public class DeathNoteImplementation implements DeathNote {
 
     @Override
     public String getRule(int ruleNumber) {
-        if (ruleNumber < 0 || ruleNumber > RULES.size()) {
+        if (ruleNumber < 1 || ruleNumber > RULES.size()) {
             throw new IllegalArgumentException("This rule does not exist");
         }
-        return (RULES.get(ruleNumber));
+        return (RULES.get(ruleNumber - 1));
     }
 
     @Override
