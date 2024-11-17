@@ -11,20 +11,19 @@ import org.junit.jupiter.api.Test;
 
 import it.unibo.deathnote.api.DeathNote;
 import it.unibo.deathnote.impl.DeathNoteImplementation;
-import static java.lang.Thread.sleep;
 
 class TestDeathNote {
     private static final int TIME_CAUSES = 100;
-    private static final int TIME_DETAILS = 6100;
+    private static final int TIME_DETAILS = 6500;
     private DeathNote myDeathNote;
-    private String humanName;
-    private String anotherHumanName;
+    private String HUMAN_NAME;
+    private String ANOTHER_HUMAN_NAME;
 
     @BeforeEach
     public void setUp() {
         this.myDeathNote = new DeathNoteImplementation();
-        this.humanName = "Abi Cidieeffe";
-        this.anotherHumanName = "Gia Caielle";
+        this.HUMAN_NAME = "Marco Rossi";
+        this.ANOTHER_HUMAN_NAME = "Giulio Bianchi";
     }
 
     @Test
@@ -61,10 +60,10 @@ class TestDeathNote {
 
     @Test
     public void AllHumansWillDie() {
-        assertFalse(myDeathNote.isNameWritten(humanName));
-        myDeathNote.writeName(humanName);
-        assertTrue(myDeathNote.isNameWritten(humanName));
-        assertFalse(myDeathNote.isNameWritten(anotherHumanName));
+        assertFalse(myDeathNote.isNameWritten(HUMAN_NAME));
+        myDeathNote.writeName(HUMAN_NAME);
+        assertTrue(myDeathNote.isNameWritten(HUMAN_NAME));
+        assertFalse(myDeathNote.isNameWritten(ANOTHER_HUMAN_NAME));
         assertFalse(myDeathNote.isNameWritten(""));
     }
 
@@ -72,44 +71,46 @@ class TestDeathNote {
     public void CauseOfDeath() {
         try {
             myDeathNote.writeDeathCause("Injuries");
+            fail("Expected Exception to be thrown");
         } catch (NullPointerException e) {
             assertNotNull(e.getMessage());
             assertFalse(e.getMessage().isBlank());
         }
-        myDeathNote.writeName(anotherHumanName);
-        assertEquals(myDeathNote.getDeathCause(anotherHumanName), "heart attack");
-        myDeathNote.writeName(humanName);
+        myDeathNote.writeName(ANOTHER_HUMAN_NAME);
+        assertEquals(myDeathNote.getDeathCause(ANOTHER_HUMAN_NAME), "heart attack");
+        myDeathNote.writeName(HUMAN_NAME);
         myDeathNote.writeDeathCause("karting accident");
-        assertEquals("karting accident", myDeathNote.getDeathCause(humanName));
+        assertEquals("karting accident", myDeathNote.getDeathCause(HUMAN_NAME));
         try {
-            sleep(TIME_CAUSES);
+            Thread.sleep(TIME_CAUSES);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         myDeathNote.writeDeathCause("Injuries");
-        assertEquals("karting accident", myDeathNote.getDeathCause(humanName));
+        assertEquals("karting accident", myDeathNote.getDeathCause(HUMAN_NAME));
     }
 
     @Test
     public void DeathDetails() {
         try {
             myDeathNote.writeDetails("Ran over by a bus");
+            fail("Expected Exception to be thrown");
         } catch (NullPointerException e) {
             assertNotNull(e.getMessage());
             assertFalse(e.getMessage().isBlank());
         }
-        myDeathNote.writeName(anotherHumanName);
-        assertEquals("", myDeathNote.getDeathDetails(anotherHumanName));
+        myDeathNote.writeName(ANOTHER_HUMAN_NAME);
+        assertEquals("", myDeathNote.getDeathDetails(ANOTHER_HUMAN_NAME));
         myDeathNote.writeDetails("ran for too long");
-        assertEquals("ran for too long", myDeathNote.getDeathDetails(anotherHumanName));
-        myDeathNote.writeName(humanName);
+        assertEquals("ran for too long", myDeathNote.getDeathDetails(ANOTHER_HUMAN_NAME));
+        myDeathNote.writeName(HUMAN_NAME);
         try {
-            sleep(TIME_DETAILS);
+            Thread.sleep(TIME_DETAILS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         myDeathNote.writeDetails("Got in a car accident");
-        assertEquals("", myDeathNote.getDeathDetails(humanName));
+        assertEquals("", myDeathNote.getDeathDetails(HUMAN_NAME));
     }
 
 }

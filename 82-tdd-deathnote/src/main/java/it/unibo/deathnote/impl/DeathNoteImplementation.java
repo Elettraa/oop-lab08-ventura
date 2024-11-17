@@ -14,15 +14,16 @@ import it.unibo.deathnote.api.DeathNote;
  */
 public class DeathNoteImplementation implements DeathNote {
     private static Map<String, DeathDescription> deathnote;
-    private static String lastName = null;
+    private String lastName;
     private static String defaultCauseOfDeath = "heart attack";
     private static final int TIME_CAUSES = 40;
     private static final int TIME_DETAILS = 6000;
-    private static long start_time = 0;
-    private static long final_time = 0;
+    private long start_time = 0;
+    private long final_time = 0;
 
     public DeathNoteImplementation() {
         deathnote = new HashMap<>();
+        lastName = null;
     }
 
     @Override
@@ -48,6 +49,9 @@ public class DeathNoteImplementation implements DeathNote {
         if (cause == null) {
             throw new NullPointerException("No cause given");
         }
+        if (lastName == null) {
+            throw new NullPointerException("No name written");
+        }
         final_time = System.currentTimeMillis();
         if (final_time - start_time > TIME_CAUSES) {
             return false;
@@ -62,8 +66,11 @@ public class DeathNoteImplementation implements DeathNote {
         if (details == null) {
             throw new NullPointerException("No details given");
         }
+        if (lastName == null) {
+            throw new NullPointerException("No name written");
+        }
         final_time = System.currentTimeMillis();
-        if (final_time - start_time > TIME_DETAILS + TIME_CAUSES) {
+        if (final_time - start_time > TIME_DETAILS) {
             return false;
         }
         deathnote.get(lastName).setDeathDetails(details);

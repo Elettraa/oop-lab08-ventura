@@ -30,7 +30,6 @@ public final class DrawNumberControllerImpl implements DrawNumberController {
 
     @Override
     public void addView(final DrawNumberView view) {
-        //Objects.requireNonNull(view, "Cannot set a null view");
         views.add(view);
         view.setController(this);
         view.start();
@@ -38,9 +37,9 @@ public final class DrawNumberControllerImpl implements DrawNumberController {
 
     @Override
     public void newAttempt(final int n) {
-        final DrawResult resul = model.attempt(n);
+        final DrawResult result = model.attempt(n);
         for (DrawNumberView view : views) {
-            view.result(resul);
+            view.result(result);
         }
     }
 
